@@ -33,8 +33,7 @@ class Program
         myresume.Display();
 
         //string myResume = resume._jobs[0]._company;
-        //Console.WriteLine(myResume);
-
+        //Console.WriteLine(myResume)
 
     }
 }
