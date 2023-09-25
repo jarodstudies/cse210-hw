@@ -15,7 +15,7 @@ class Program
 
         
 
-        while (decision != 6)
+        while (decision != 5)
         {
 
         
