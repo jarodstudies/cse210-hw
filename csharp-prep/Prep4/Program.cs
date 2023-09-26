@@ -17,7 +17,7 @@ class Program
         while (number != 0)
         {
 
-            Console.Write("Eneter number: ");
+            Console.Write("Enter number: ");
 
             number = int.Parse(Console.ReadLine());
             
@@ -30,7 +30,7 @@ class Program
         int sum =  0;
         foreach (int userNumber in numbers)
         {
-            sum =+ userNumber;
+            sum += userNumber;
         }
 
         Console.WriteLine($"The total sum is: {sum}");
