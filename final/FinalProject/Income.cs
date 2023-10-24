@@ -12,7 +12,6 @@ public class Income
         _amountRecived = amountRecived;
         _dateRecived = dateRecived;
         _source = source;
-
     }
 
     public void DisplayIncome()
@@ -22,7 +21,7 @@ public class Income
 
     public string GetStringRepresentation()
     {
-        return $"Income: {_name} - {_source} - {_amountRecived} - {_dateRecived}";
+        return $"Income,{_name},{_source},{_amountRecived},{_dateRecived}";
     }
 
 }

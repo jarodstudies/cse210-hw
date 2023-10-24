@@ -1,0 +1,11 @@
+Income,Jarod,Work,24000,2023-11-01
+Expense,Variable Expense,Baby,3200,0
+Expense,Variable Expense,Car,3500,0
+Expense,Variable Expense,Food,3200,0
+Expense,Fixed Expense,Rent,3200,0
+Expense,Variable Expense,Baby,0,320
+Expense,Fixed Expense,Rent,0,3200
+CurrentSavings,52480
+TotalIncome,24000
+TotalExpectedExpenses,13100
+TotalRecordedExpenses,3520

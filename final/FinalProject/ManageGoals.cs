@@ -4,7 +4,6 @@ public class ManageGoals
 
     List<BudgetGoals> _goals = new List<BudgetGoals>();
 
-    ManageBudget budget = new ManageBudget();
     public void start()
     {
 
@@ -61,7 +60,8 @@ public class ManageGoals
         {
             Console.WriteLine("Enter the name of goal: ");
             string name = Console.ReadLine();
-            decimal currentAmount = budget.GetSavings();
+            Console.WriteLine("Enter your current savings: ");
+            decimal currentAmount = decimal.Parse(Console.ReadLine());
             Console.WriteLine("Enter the amount needed to be saved: ");
             decimal targetAmount = decimal.Parse(Console.ReadLine());
             Console.WriteLine("Enter the strategy to achieve the goal: ");
@@ -78,7 +78,8 @@ public class ManageGoals
         {
             Console.WriteLine("Enter the name of goal: ");
             string name = Console.ReadLine();
-            decimal currentAmount = budget.GetSavings();
+            Console.WriteLine("Enter your current savings: ");
+            decimal currentAmount = decimal.Parse(Console.ReadLine());
             Console.WriteLine("Enter the amount needed to be saved: ");
             decimal targetAmount = decimal.Parse(Console.ReadLine());
             Console.WriteLine("Enter the strategy to achieve the goal: ");
@@ -97,7 +98,8 @@ public class ManageGoals
         {
             Console.WriteLine("Enter the name of goal: ");
             string name = Console.ReadLine();
-            decimal currentAmount = budget.GetSavings();
+            Console.WriteLine("Enter your current savings: ");
+            decimal currentAmount = decimal.Parse(Console.ReadLine());
             Console.WriteLine("Enter the amount needed to be saved: ");
             decimal targetAmount = decimal.Parse(Console.ReadLine());
             Console.WriteLine("Enter the strategy to achieve the goal: ");

@@ -6,19 +6,24 @@ public abstract class Expense
     protected string _category;
     protected decimal _amount;
 
-    public Expense(string category, decimal amount)
+    public Expense(string category, decimal amount, decimal addedAmount)
     {
         _category = category;
         _amount = amount;
-        
-
+        _addedAmount = addedAmount;
     }
 
-    public abstract void AddExpense();
+    public void AddExpense()
+    {
+        Console.WriteLine($"You have added {_addedAmount} to the following Category: {_category}.");
+    }
+
+    public abstract string GetStringRepresentationAdddedExpense();
+
+    public abstract string GetStringRepresentationRecordExpense();
+    
 
     public abstract void PrintDetails();
-
-    public abstract string GetStringRepresentation();
 
     public void SetAddedAmount(decimal addedAmount)
     {
