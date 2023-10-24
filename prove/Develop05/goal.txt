@@ -1,2 +1,0 @@
-Simple Goal, Read Scriptures, Read a chapter from the Book of Mormon, 20, False
-Checklist Goal, Temple, Go to the temple five times., 20, 100, 0, 5

@@ -11,6 +11,15 @@ public class VariableExpense : Expense
         Console.WriteLine($"Variable Expense: {_category} : {_amount}");
     }
 
+    public override void AddExpense()
+    {
+
+        
+
+        Console.WriteLine($"You have added {_addedAmount}. ");
+
+    }
+
     public override string GetStringRepresentation()
     {
         throw new NotImplementedException();

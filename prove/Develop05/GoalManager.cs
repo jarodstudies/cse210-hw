@@ -175,8 +175,8 @@ public class GoalManager
                     Console.Write("What is the bonus for accomploshing it that many times? ");
                     int bonus = int.Parse(Console.ReadLine());
 
-                    CheckListGoal newChecklistGoal =  new CheckListGoal(shortName, description, points, amount, bonus);
-                    _goals.Add(newChecklistGoal);
+                    CheckListGoal newCheckListGoal =  new CheckListGoal(shortName, description, points, amount, bonus);
+                    _goals.Add(newCheckListGoal);
                 }
 
     }

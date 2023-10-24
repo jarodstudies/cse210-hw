@@ -3,6 +3,8 @@ public class ManageBudget
 
     private List<Income> _income = new List<Income>();
     private List<Expense> _expense = new List<Expense>();
+    private List<Expense> _addedExpense = new List<Expense>();
+
 
     private decimal _savings;
     private decimal _totalIncome;
@@ -23,21 +25,20 @@ public class ManageBudget
             Console.WriteLine(" 2: Add Expense");
             Console.WriteLine(" 3: Record Expense");
             Console.WriteLine(" 4: View Budget Plan");
-            Console.WriteLine(" 5: View Savings");
-            Console.WriteLine(" 6: Go Back to Menu");
+            Console.WriteLine(" 5: Go Back to Menu");
             Console.Write("Select a choice from the budget menu:");
             int budgetChoice = int.Parse(Console.ReadLine());
 
             if (budgetChoice == 1)
             {
-                Console.WriteLine("\nEnter name of person who recieved an income: ");
+                Console.Write("\nEnter name of person who recieved an income: ");
                 string name = Console.ReadLine();
-                Console.WriteLine("\nWhat source did you recieve your income from: ");
+                Console.Write("What source did you recieve your income from: ");
                 string source = Console.ReadLine();
-                Console.WriteLine("\nEnter the amount recieved after Tax: ");
+                Console.Write("Enter the amount recieved after Tax: ");
                 decimal amountRecived = decimal.Parse(Console.ReadLine());
-                Console.WriteLine("\nEnter date income was recieved: ");
-                DateOnly dateRecieved = DateOnly.Parse(Console.ReadLine());
+                Console.Write("Enter date income was recieved (yyyy-MM-dd): ");
+                string dateRecieved = Console.ReadLine();
 
                 _totalIncome += amountRecived;
 
@@ -49,33 +50,52 @@ public class ManageBudget
             else if (budgetChoice == 2)
             {
 
-                Console.WriteLine("\nEnter the type of expense (Variable or Fixed): ");
-                string expenseType = Console.ReadLine();
-
-                if (expenseType == "Variable")
+                while(true)
                 {
 
-                    string category = GetCategoryExpense();
-                    decimal amount = GetAmountExpense();
+                    Console.WriteLine("\nSelect Type:");
+                    Console.WriteLine(" 1: Variable");
+                    Console.WriteLine(" 2: Fixed");
+                    Console.WriteLine(" 3: Exit");
+                    Console.Write("Enter the type of expense or '3' to go back to Budget Options: ");
+                    int userOption = int.Parse(Console.ReadLine());
 
-                    _expectedExepense += amount;
+                    if (userOption == 1)
+                    {
 
-                    VariableExpense newExpense = new VariableExpense(category, amount);
+                        string category = GetCategoryExpense();
+                        decimal amount = GetAmountExpense();
 
-                    _expense.Add(newExpense);
+                        _expectedExepense += amount;
 
-                }
+                        VariableExpense newExpense = new VariableExpense(category, amount);
 
-                else if (expenseType == "Fixed")
-                {
-                    string category = GetCategoryExpense();
-                    decimal amount = GetAmountExpense();
+                        _expense.Add(newExpense);
 
-                    FixedExpense newExpense = new FixedExpense(category, amount);
+                    }
 
-                    _expense.Add(newExpense);
+                    else if (userOption == 2)
+                    {
+                        string category = GetCategoryExpense();
+                        decimal amount = GetAmountExpense();
 
-                    _expectedExepense += amount;
+                        FixedExpense newExpense = new FixedExpense(category, amount);
+
+                        _expense.Add(newExpense);
+
+                        _expectedExepense += amount;
+
+                    }
+
+                    else if (userOption == 3)
+                    {
+                        break;
+                    }
+
+                    else
+                    {
+                        Console.WriteLine("You have chosen an incorrect option, Please reselect.");
+                    }
 
                 }
 
@@ -84,6 +104,7 @@ public class ManageBudget
             else if (budgetChoice == 3)
             {
 
+
             }
 
             else if (budgetChoice == 4)
@@ -91,15 +112,12 @@ public class ManageBudget
                 DisplayIncome();
 
                 DisplayExpense();
+
+                _savings = _totalIncome  - _expectedExepense;
+                Console.WriteLine($"\nYou will save: {_savings}");
             }
 
             else if (budgetChoice == 5)
-            {
-                _savings = _totalIncome  - _expectedExepense;
-                Console.WriteLine($"You will save: {_savings}");
-            }
-
-            else if (budgetChoice == 6)
             {
                 break;
             }
@@ -111,7 +129,7 @@ public class ManageBudget
 
     public string GetCategoryExpense()
     {
-        Console.WriteLine("Enter the expense category: ");
+        Console.Write("Enter the expense category: ");
         string category = Console.ReadLine();
 
         return category;
@@ -119,7 +137,7 @@ public class ManageBudget
 
     public decimal GetAmountExpense()
     {
-        Console.WriteLine("Enter the allocated amount: ");
+        Console.Write("Enter the allocated amount: ");
         decimal amount = int.Parse(Console.ReadLine());
 
         return amount;
@@ -146,7 +164,7 @@ public class ManageBudget
     {
 
         Console.WriteLine("\nExptected Expense:");
-        for (int i = 0; i < _income.Count; i++)
+        for (int i = 0; i < _expense.Count; i++)
         {
             Expense expense = _expense[i];
             Console.Write($"{i + 1}. ");
@@ -158,12 +176,33 @@ public class ManageBudget
     }
 
 
+
     // Getting Varibales within the class
     public decimal GetSavings()
     {
         return _savings;
     }
 
+
+    // Add Expense Methof
+    public void AddExpense()
+    {
+        Console.WriteLine("Category Menu: ");
+        for (int i = 0; i < _expense.Count; i++)
+        {
+            Expense expense = _expense[i];
+            string category = expense.GetCategory();
+            Console.WriteLine($"{i + 1}: {category}");
+        }
+
+        Console.Write("Choose a category for the added expense: ");
+        int categoryChoice = int.Parse(Console.ReadLine());
+        Expense addedExpense = _expense[categoryChoice - 1];
+
+        
+
+
+    }
     
 
 }
